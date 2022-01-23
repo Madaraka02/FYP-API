@@ -46,17 +46,6 @@ async def predict(
     # add 3 channels to image
     pil_image = pil_image.convert('RGB')
 
-    
-    # pil_image = np.array([[1, 2], [3, 4]])
-    # image = np.stack((pil_image,)*3, axis=-1)
-    # cat(3, grayImage, grayImage, grayImage)
-    # pil_image = pil_image.convert('L')
-    # gray = cv2.cvtColor(pil_image, cv.CV_BGR2GRAY)
-    # image = np.zeros_like(pil_image)
-    # image[:,:,0] = gray
-    # image[:,:,1] = gray
-    # image[:,:,2] = gray
-    # cv2.imwrite(pil_image, image)
 
     pil_image = tf.keras.preprocessing.image.img_to_array(pil_image)
     pil_image = pil_image / 255
