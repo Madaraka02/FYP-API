@@ -21,7 +21,7 @@ app = FastAPI()
 #     allow_headers=["*"],
 # )
 
-MODEL = tf.keras.models.load_model("../gfgModel.h5")
+MODEL = tf.keras.models.load_model("../saved_model")
 
 CLASS_NAMES = ["COVID", "Normal"]
 
@@ -64,8 +64,8 @@ async def predict(
     img_batch = np.expand_dims(pil_image, 0)
     
     predictions = MODEL.predict(img_batch)
-
-    predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
+    score = tf.nn.softmax(predictions[0])
+    predicted_class=CLASS_NAMES[np.argmax(score)]
     confidence = np.max(predictions[0])
     return {
         'class': predicted_class,
