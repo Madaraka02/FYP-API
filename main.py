@@ -21,7 +21,7 @@ app = FastAPI()
 #     allow_headers=["*"],
 # )
 
-MODEL = tf.keras.models.load_model("../saved_model")
+MODEL = tf.keras.models.load_model("../saved_models/3")
 
 CLASS_NAMES = ["COVID", "Normal"]
 
