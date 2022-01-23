@@ -53,8 +53,8 @@ async def predict(
     img_batch = np.expand_dims(pil_image, 0)
     
     predictions = MODEL.predict(img_batch)
-    score = tf.nn.softmax(predictions[0])
-    predicted_class=CLASS_NAMES[np.argmax(score)]
+    # score = tf.nn.softmax(predictions[0])
+    predicted_class=CLASS_NAMES[np.argmax(predictions[0])]
     confidence = np.max(predictions[0])
     return {
         'class': predicted_class,
